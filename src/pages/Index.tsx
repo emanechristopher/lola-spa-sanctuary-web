@@ -4,14 +4,34 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Star, Phone, MapPin, Clock, Sparkles, Heart, Leaf, Users, MessageCircle } from 'lucide-react';
+import { Star, Phone, MapPin, Clock, Sparkles, Heart, Leaf, Users, MessageCircle, Menu, X } from 'lucide-react';
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
+    }
+  };
+
+  const handleReservation = () => {
+    // Scroll to contact section for reservation
+    scrollToSection('contact');
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would typically send the form data to a backend
+    alert('Demande de réservation envoyée ! Nous vous contacterons bientôt.');
+  };
 
   const services = [
     {
@@ -69,17 +89,70 @@ const Index = () => {
               />
             </div>
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <a href="#accueil" className="hover:text-gold transition-colors">Accueil</a>
-            <a href="#soins" className="hover:text-gold transition-colors">Nos Soins</a>
-            <a href="#apropos" className="hover:text-gold transition-colors">À Propos</a>
-            <a href="#galerie" className="hover:text-gold transition-colors">Galerie</a>
-            <a href="#contact" className="hover:text-gold transition-colors">Contact</a>
+            <button onClick={() => scrollToSection('accueil')} className="hover:text-gold transition-colors">Accueil</button>
+            <button onClick={() => scrollToSection('soins')} className="hover:text-gold transition-colors">Nos Soins</button>
+            <button onClick={() => scrollToSection('apropos')} className="hover:text-gold transition-colors">À Propos</button>
+            <button onClick={() => scrollToSection('galerie')} className="hover:text-gold transition-colors">Galerie</button>
+            <button onClick={() => scrollToSection('contact')} className="hover:text-gold transition-colors">Contact</button>
           </div>
-          <Button className="bg-gold hover:bg-gold/80 text-black font-semibold">
+          
+          {/* Desktop Reservation Button */}
+          <Button onClick={handleReservation} className="hidden md:flex bg-gold hover:bg-gold/80 text-black font-semibold">
             Réserver
           </Button>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-gold/20">
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <button 
+                onClick={() => scrollToSection('accueil')} 
+                className="block w-full text-left py-2 hover:text-gold transition-colors"
+              >
+                Accueil
+              </button>
+              <button 
+                onClick={() => scrollToSection('soins')} 
+                className="block w-full text-left py-2 hover:text-gold transition-colors"
+              >
+                Nos Soins
+              </button>
+              <button 
+                onClick={() => scrollToSection('apropos')} 
+                className="block w-full text-left py-2 hover:text-gold transition-colors"
+              >
+                À Propos
+              </button>
+              <button 
+                onClick={() => scrollToSection('galerie')} 
+                className="block w-full text-left py-2 hover:text-gold transition-colors"
+              >
+                Galerie
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="block w-full text-left py-2 hover:text-gold transition-colors"
+              >
+                Contact
+              </button>
+              <Button onClick={handleReservation} className="w-full bg-gold hover:bg-gold/80 text-black font-semibold mt-4">
+                Réserver
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -104,7 +177,7 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-200 font-light">
             Découvrez l'art du bien-être dans un cadre luxueux et apaisant
           </p>
-          <Button size="lg" className="bg-gold hover:bg-gold/80 text-black font-semibold px-8 py-3 text-lg">
+          <Button onClick={() => scrollToSection('soins')} size="lg" className="bg-gold hover:bg-gold/80 text-black font-semibold px-8 py-3 text-lg">
             Découvrir nos soins
           </Button>
         </div>
@@ -275,15 +348,17 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-light mb-8 text-gold">Demande de réservation</h3>
               
-              <form className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input 
                     placeholder="Prénom" 
                     className="bg-white/10 border-gold/30 text-white placeholder:text-gray-400"
+                    required
                   />
                   <Input 
                     placeholder="Nom" 
                     className="bg-white/10 border-gold/30 text-white placeholder:text-gray-400"
+                    required
                   />
                 </div>
                 
@@ -291,12 +366,14 @@ const Index = () => {
                   type="email" 
                   placeholder="Email" 
                   className="bg-white/10 border-gold/30 text-white placeholder:text-gray-400"
+                  required
                 />
                 
                 <Input 
                   type="tel" 
                   placeholder="Téléphone" 
                   className="bg-white/10 border-gold/30 text-white placeholder:text-gray-400"
+                  required
                 />
                 
                 <Input 
@@ -309,7 +386,7 @@ const Index = () => {
                   className="bg-white/10 border-gold/30 text-white placeholder:text-gray-400 min-h-[100px]"
                 />
                 
-                <Button className="w-full bg-gold hover:bg-gold/80 text-black font-semibold py-3">
+                <Button type="submit" className="w-full bg-gold hover:bg-gold/80 text-black font-semibold py-3">
                   Envoyer la demande
                 </Button>
               </form>
