@@ -53,7 +53,7 @@ const Index = () => {
     "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1583416750470-965b2707b355?w=600&h=400&fit=crop"
+    "https://images.unsplash.com/photo-1591343395902-bfe0b6d23b19?w=600&h=400&fit=crop"
   ];
 
   return (
@@ -62,11 +62,13 @@ const Index = () => {
       <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gold/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
-              alt="Lola SPA Logo" 
-              className="h-12 w-auto"
-            />
+            <div className="bg-white rounded-lg p-2">
+              <img 
+                src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
+                alt="Lola SPA Logo" 
+                className="h-8 w-auto"
+              />
+            </div>
           </div>
           <div className="hidden md:flex space-x-8">
             <a href="#accueil" className="hover:text-gold transition-colors">Accueil</a>
@@ -90,11 +92,13 @@ const Index = () => {
           }}
         />
         <div className={`relative z-10 text-center px-4 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <img 
-            src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
-            alt="Lola SPA Logo" 
-            className="h-32 w-auto mx-auto mb-8 animate-fade-in"
-          />
+          <div className="bg-white rounded-lg p-4 inline-block mb-8">
+            <img 
+              src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
+              alt="Lola SPA Logo" 
+              className="h-24 w-auto animate-fade-in"
+            />
+          </div>
           <h1 className="text-5xl md:text-7xl font-light mb-6 text-white">
             Votre Évasion <span className="text-gold font-normal">Bien-être</span>
           </h1>
@@ -246,7 +250,7 @@ const Index = () => {
                   <MapPin className="text-gold w-6 h-6" />
                   <div>
                     <h4 className="font-semibold text-white">Adresse</h4>
-                    <p className="text-gray-300">123 Avenue du Bien-être, Dakar, Sénégal</p>
+                    <p className="text-gray-300">Mosquée de la paix - Akanda, Libreville, Gabon</p>
                   </div>
                 </div>
                 
@@ -254,7 +258,7 @@ const Index = () => {
                   <Phone className="text-gold w-6 h-6" />
                   <div>
                     <h4 className="font-semibold text-white">Téléphone</h4>
-                    <p className="text-gray-300">+221 33 XXX XX XX</p>
+                    <p className="text-gray-300">+241 77 17 66 55</p>
                   </div>
                 </div>
                 
@@ -328,11 +332,13 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <img 
-                src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
-                alt="Lola SPA Logo" 
-                className="h-8 w-auto"
-              />
+              <div className="bg-white rounded p-1">
+                <img 
+                  src="/lovable-uploads/3b653b41-45b1-4b4f-95cb-b669ada248d9.png" 
+                  alt="Lola SPA Logo" 
+                  className="h-6 w-auto"
+                />
+              </div>
               <span className="text-white font-light">© 2024 Lola SPA - Tous droits réservés</span>
             </div>
             <div className="flex space-x-6">
@@ -346,7 +352,7 @@ const Index = () => {
 
       {/* WhatsApp Floating Button */}
       <a 
-        href="https://wa.me/221XXXXXXXX"
+        href="https://wa.me/24177176655"
         className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50"
         target="_blank"
         rel="noopener noreferrer"
