@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -190,8 +189,8 @@ const Index = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=800&fit=crop"
-                alt="Intérieur Lola SPA"
+                src="/lovable-uploads/4f3ba94f-4136-42f9-b96e-3e135f210c18.png"
+                alt="Lola SPA - Beauté et Bien-être"
                 className="rounded-lg shadow-2xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-gold text-black p-6 rounded-lg">
@@ -268,14 +267,6 @@ const Index = () => {
                     <h4 className="font-semibold text-white">Horaires</h4>
                     <p className="text-gray-300">Lun-Sam: 9h-21h | Dim: 10h-18h</p>
                   </div>
-                </div>
-              </div>
-
-              {/* Map placeholder */}
-              <div className="bg-gray-800 rounded-lg h-64 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="text-gold w-12 h-12 mx-auto mb-4" />
-                  <p className="text-gray-300">Carte interactive à venir</p>
                 </div>
               </div>
             </div>
